@@ -1,7 +1,8 @@
-import asyncio
 import os
 import re
-import json
+import asyncio
+import aiohttp
+import requests
 from typing import Union
 
 import yt_dlp

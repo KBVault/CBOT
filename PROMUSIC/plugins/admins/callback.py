@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 import config
-from PROMUSIC import YouTube, app, YTB
+from PROMUSIC import YouTube, app
 from PROMUSIC.core.call import PRO
 from PROMUSIC.misc import SUDOERS, db
 from PROMUSIC.utils.database import (
@@ -259,14 +259,6 @@ async def del_back_playlist(client, CallbackQuery, _):
                     video=status,
                 )
             except:
-                try:
-                    file_path, direct = await YTB.download(
-                        videoid,
-                        mystic,
-                        videoid=True,
-                        video=status,
-                    )
-                except:
                     return await mystic.edit_text(_["call_6"])
             try:
                 image = await YouTube.thumbnail(videoid, True)
