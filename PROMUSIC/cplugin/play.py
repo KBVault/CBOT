@@ -8,7 +8,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 from PROMUSIC.utils.database import get_assistant
 import config
 from PROMUSIC import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from PROMUSIC.core.call import Hotty
+from PROMUSIC.core.call import PRO
 from PROMUSIC.misc import SUDOERS
 from PROMUSIC.utils.inline import panel_markup_clone
 from PROMUSIC.utils import seconds_to_min, time_to_seconds
@@ -387,7 +387,7 @@ async def play_commnd(
             return await mystic.delete()
         else:
             try:
-                await Hotty.stream_call(url)
+                await PRO.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(_["black_9"])
                 return await client.send_message(
@@ -773,7 +773,7 @@ from pyrogram.types import InlineKeyboardMarkup
 
 import config
 from PROMUSIC import Carbon, YouTube
-from PROMUSIC.core.call import Hotty
+from PROMUSIC.core.call import PRO
 from PROMUSIC.misc import db
 from PROMUSIC.utils.database import add_active_video_chat, is_active_chat
 from PROMUSIC.utils.exceptions import AssistantErr
@@ -785,7 +785,7 @@ from PROMUSIC.utils.inline import (
     stream_markup2,
     panel_markup_4,
 )
-from PROMUSIC.utils.pastebin import HottyBin
+from PROMUSIC.utils.pastebin import PROBin
 from PROMUSIC.utils.stream.queue import put_queue, put_queue_index
 from youtubesearchpython.__future__ import VideosSearch
 
@@ -807,7 +807,7 @@ async def stream(
     if not result:
         return
     if forceplay:
-        await Hotty.force_stop_stream(chat_id)
+        await PRO.force_stop_stream(chat_id)
     if streamtype == "playlist":
         msg = f"{_['play_19']}\n\n"
         count = 0
@@ -855,7 +855,7 @@ async def stream(
                 except:
 
                     os.system(f"kill -9 {os.getpid()} && bash start")
-                await Hotty.join_call(
+                await PRO.join_call(
                     chat_id,
                     original_chat_id,
                     file_path,
@@ -894,7 +894,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await HottyBin(msg)
+            link = await PROBin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -948,7 +948,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await Hotty.join_call(
+            await PRO.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -1010,7 +1010,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await Hotty.join_call(chat_id, original_chat_id, file_path, video=None)
+            await PRO.join_call(chat_id, original_chat_id, file_path, video=None)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -1062,7 +1062,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await Hotty.join_call(chat_id, original_chat_id, file_path, video=status)
+            await PRO.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -1118,7 +1118,7 @@ async def stream(
             n, file_path = await YouTube.video(link)
             if n == 0:
                 raise AssistantErr(_["str_3"])
-            await Hotty.join_call(
+            await PRO.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -1175,7 +1175,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await Hotty.join_call(
+            await PRO.join_call(
                 chat_id,
                 original_chat_id,
                 link,

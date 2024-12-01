@@ -1,7 +1,7 @@
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from PROMUSIC import app
-from PROMUSIC.core.call import Hotty
+from PROMUSIC.core.call import PRO
 from PROMUSIC.utils.decorators import AdminRightsCheck
 from PROMUSIC.utils.inline import close_markup
 from config import BANNED_USERS
@@ -79,7 +79,7 @@ async def music_off(chat_id: int):
 async def pause_admin(cli, message: Message, _, chat_id):
 
     await music_off(chat_id)
-    await Hotty.pause_stream(chat_id)
+    await PRO.pause_stream(chat_id)
 
     buttons = [
         [

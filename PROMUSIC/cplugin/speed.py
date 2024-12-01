@@ -2,7 +2,7 @@ from pyrogram import filters, Client
 from pyrogram.types import Message
 
 from PROMUSIC import app
-from PROMUSIC.core.call import Hotty
+from PROMUSIC.core.call import PRO
 from PROMUSIC.misc import SUDOERS, db
 from PROMUSIC.utils import AdminRightsCheck
 from PROMUSIC.utils.database import is_active_chat, is_nonadmin_chat
@@ -86,7 +86,7 @@ async def del_back_playlist(client, callback_query, _):
         text=_["admin_32"].format(callback_query.from_user.mention),
     )
     try:
-        await Hotty.speedup_stream(
+        await PRO.speedup_stream(
             chat_id,
             file_path,
             speed,

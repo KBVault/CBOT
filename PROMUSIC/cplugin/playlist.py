@@ -27,7 +27,7 @@ from PROMUSIC.utils.inline.playlist import (
     get_playlist_markup,
     warning_markup,
 )
-from PROMUSIC.utils.pastebin import HottyBin
+from PROMUSIC.utils.pastebin import PROBin
 import time
 import asyncio
 import yt_dlp
@@ -147,7 +147,7 @@ async def check_playlist_clone(client, message: Message, _):
         count += 1
         msg += f"\n\n{count}- {title[:70]}\n"
         msg += _["playlist_5"].format(duration)
-    link = await HottyBin(msg)
+    link = await PROBin(msg)
     lines = msg.count("\n")
     if lines >= 17:
         car = os.linesep.join(msg.split(os.linesep)[:17])
