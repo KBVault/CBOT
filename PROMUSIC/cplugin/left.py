@@ -19,7 +19,7 @@ from pyrogram.enums import ParseMode
 from pyrogram import *
 from pyrogram.types import *
 from logging import getLogger
-from PROMUSIC.utils.branded_ban import admin_filter
+from PROMUSIC.utils.pro_ban import admin_filter
 from PROMUSIC import app
 from pyrogram import filters
 from pyrogram.errors import RPCError
