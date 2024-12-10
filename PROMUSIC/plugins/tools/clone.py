@@ -145,6 +145,7 @@ async def restart_bots():
                     CLONES.add(bot.id)
                 except Exception:
                     pass
+            await asyncio.sleep(5)
     except Exception as e:
         logging.exception("Error while restarting bots.")
 
