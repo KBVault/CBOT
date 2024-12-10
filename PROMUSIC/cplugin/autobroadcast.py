@@ -90,7 +90,7 @@ async def continuous_cbroadcast():
     while True:
         if AUTO_GCAST:
             try:
-                await send_message_to_chats(client)
+                await send_message_to_chats()
             except Exception as e:
                 pass
 
