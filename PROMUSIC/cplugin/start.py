@@ -80,7 +80,7 @@ async def start_pm(client: Client, message: Message, _):
         if name[0:4] == "help":
             keyboard = first_page(_)
             return await message.reply_photo(
-                photo=config.START_IMG_URL,
+                photo=START_IMG_URL,
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
                 reply_markup=keyboard,
             )
@@ -167,7 +167,7 @@ async def start_gp(client, message: Message, _):
     out = start_panel(_)
     BOT_UP = await bot_up_time()
     await message.reply_photo(
-        photo=config.START_IMG_URL,
+        photo=START_IMG_URL,
         caption=_["start_1"].format(a.mention, BOT_UP),
         reply_markup=InlineKeyboardMarkup(out),
     )
