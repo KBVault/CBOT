@@ -38,7 +38,6 @@ user_command_count = {}
 SPAM_THRESHOLD = 2
 SPAM_WINDOW_SECONDS = 5
 
-START_IMG_URL = "https://graph.org/file/f076ff205c6ce6c554b25.jpg"
 
 YUMI_PICS = [
     "https://graph.org/file/f076ff205c6ce6c554b25.jpg",
@@ -80,7 +79,7 @@ async def start_pm(client: Client, message: Message, _):
         if name[0:4] == "help":
             keyboard = first_page(_)
             return await message.reply_photo(
-                photo=START_IMG_URL,
+                photo=config.START_IMG_URL,
                 caption=_["help_1"].format(config.SUPPORT_CHAT),
                 reply_markup=keyboard,
             )
@@ -131,7 +130,7 @@ async def start_pm(client: Client, message: Message, _):
     else:
         out = private_panel(_)
         await message.reply_photo(
-            photo=START_IMG_URL,
+            photo=config.START_IMG_URL,
             caption=_["start_2"].format(message.from_user.mention, a.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
@@ -167,7 +166,7 @@ async def start_gp(client, message: Message, _):
     out = start_panel(_)
     BOT_UP = await bot_up_time()
     await message.reply_photo(
-        photo=START_IMG_URL,
+        photo=config.START_IMG_URL,
         caption=_["start_1"].format(a.mention, BOT_UP),
         reply_markup=InlineKeyboardMarkup(out),
     )
