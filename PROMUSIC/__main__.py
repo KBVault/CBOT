@@ -25,7 +25,6 @@ async def init():
         LOGGER(__name__).error("𝐒𝐭𝐫𝐢𝐧𝐠 𝐒𝐞𝐬𝐬𝐢𝐨𝐧 𝐍𝐨𝐭 𝐅𝐢𝐥𝐥𝐞𝐝, 𝐏𝐥𝐞𝐚𝐬𝐞 𝐅𝐢𝐥𝐥 𝐀 𝐏𝐲𝐫𝐨𝐠𝐫𝐚𝐦 𝐒𝐞𝐬𝐬𝐢𝐨𝐧")
         exit()
     await sudo()
-    await restart_bots()
     try:
         users = await get_gbanned()
         for user_id in users:
@@ -51,6 +50,7 @@ async def init():
     except:
         pass
     await PRO.decorators()
+    await restart_bots()
     LOGGER("PROMUSIC").info(
         "╔═════ஜ۩۞۩ஜ════╗\n  ☠︎︎𝗠𝗔𝗗𝗘 𝗕𝗬 𝗣𝗿𝗼𝗕𝗼𝘁𝘀☠︎︎\n╚═════ஜ۩۞۩ஜ════╝"
     )
