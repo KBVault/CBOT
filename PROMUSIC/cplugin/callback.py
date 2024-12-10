@@ -53,7 +53,6 @@ from PROMUSIC.utils.inline import (
 )
 from PROMUSIC.utils.stream.autoclear import auto_clean
 from PROMUSIC.utils.thumbnails import get_thumb
-import config
 from config import (
     BANNED_USERS,
     SOUNCLOUD_IMG_URL,
