@@ -136,7 +136,7 @@ async def restart_bots():
                 API_ID,
                 API_HASH,
                 bot_token=bot_token,
-                plugins=dict(root="PROMUSIC.cplugin"),
+                plugins=dict(root="PROMUSIC"),
             )
             await ai.start()
             bot = await ai.get_me()
