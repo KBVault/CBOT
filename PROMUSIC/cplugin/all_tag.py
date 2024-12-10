@@ -9,7 +9,7 @@ from PROMUSIC.utils.pro_ban import admin_filter
 
 SPAM_CHATS = []
 
-@Client.on_message(filters.command(["mention", "all"]) & filters.group & admin_filter)
+@Client.on_message(filters.command(["mention", "all", "call"]) & filters.group & admin_filter)
 async def tag_all_users(_,message): 
     replied = message.reply_to_message  
     if len(message.command) < 2 and not replied:
