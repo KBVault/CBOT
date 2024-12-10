@@ -25,6 +25,7 @@ from config import PLAYLIST_IMG_URL, SUPPORT_CHAT, adminlist
 from strings import get_string
 
 links = {}
+clinks = {}
 
 
 def PlayWrapper(command):
