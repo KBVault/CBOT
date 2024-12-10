@@ -38,6 +38,7 @@ user_command_count = {}
 SPAM_THRESHOLD = 2
 SPAM_WINDOW_SECONDS = 5
 
+START_IMG_URL = "https://graph.org/file/f076ff205c6ce6c554b25.jpg"
 
 YUMI_PICS = [
     "https://graph.org/file/f076ff205c6ce6c554b25.jpg",
@@ -130,7 +131,7 @@ async def start_pm(client: Client, message: Message, _):
     else:
         out = private_panel(_)
         await message.reply_photo(
-            photo=config.START_IMG_URL,
+            photo=START_IMG_URL,
             caption=_["start_2"].format(message.from_user.mention, a.mention),
             reply_markup=InlineKeyboardMarkup(out),
         )
