@@ -31,21 +31,41 @@ from PROMUSIC.utils.pro_ban import admin_filter
 from PROMUSIC.utils.decorators.userbotjoin import UserbotWrapper #change
 from PROMUSIC.utils.database import get_assistant, is_active_chat
 
+caption = f"""**
+✪ ωεℓᴄσмє fσʀ PʀᴏBᴏᴛs ʀєρσѕ ✪
+ 
+ ➲ ᴀʟʟ ʀᴇᴘᴏ ᴇᴀsɪʟʏ ᴅᴇᴘʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ ᴡɪᴛʜᴏᴜᴛ ᴀɴʏ ᴇʀʀᴏʀ ✰
+ 
+ ➲ ɴᴏ ʜᴇʀᴏᴋᴜ ʙᴀɴ ɪssᴜᴇ ✰
+ 
+ ➲ ɴᴏ ɪᴅ ʙᴀɴ ɪssᴜᴇ ✰
+ 
+ ➲ᴜɴʟɪᴍɪᴛᴇᴅ ᴅʏɴᴏs ✰
+ 
+ ➲ ʀᴜɴ 24x7 ʟᴀɢ ғʀᴇᴇ ᴡɪᴛʜᴏᴜᴛ sᴛᴏᴘ ✰
+ 
+ ► ɪғ ʏᴏᴜ ғᴀᴄᴇ ᴀɴʏ ᴘʀᴏʙʟᴇᴍ ᴛʜᴇɴ sᴇɴᴅ ss
+**"""
+
+buttons = [
+        [ 
+          InlineKeyboardButton("𝗔𝗗𝗗 𝗡𝗘𝗭𝗨𝗞𝗢", url=f"https://t.me/NezukoProBot?startgroup=true")
+        ],
+        [
+          InlineKeyboardButton("𝗛𝗘𝗟𝗣", url="https://t.me/ProBotGc"),
+          InlineKeyboardButton("𝗢𝗪𝗡𝗘𝗥", url="https://t.me/ZeoXpro"),
+          ],
+               [
+                InlineKeyboardButton("𝗨𝗣𝗗𝗔𝗧𝗘", url="https://t.me/ProBotts"),
+
+]]
 
 @Client.on_message(filters.command("repo") & filters.group)
 async def repo(client: Client, message: Message):
     await message.reply_photo(
-        photo=f"https://graph.org/file/2fd9703e31548f7a1aaaa.jpg",
-        caption=f"""🍁𝐂𝐋𝐈𝐂𝐊🥰𝐁𝐄𝐋𝐎𝐖💝𝐁𝐔𝐓𝐓𝐎𝐍✨𝐓𝐎🙊𝐆𝐄𝐓🌱𝐑𝐄𝐏𝐎🍁""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🌱 𝐒𝐎𝐔𝐑𝐂𝐄 🌱", url=f"https://t.me/ProBotts"
-                    )
-                ]
-            ]
-        ),
+        photo=f"https://telegra.ph/file/93fe8699ccadb924effad.jpg",
+        caption=caption,
+        reply_markup=buttons
     )
 
 
@@ -53,34 +73,18 @@ async def repo(client: Client, message: Message):
 async def help(client: Client, message: Message):
 
     await message.reply_photo(
-        photo=f"https://graph.org/file/2fd9703e31548f7a1aaaa.jpg",
-        caption=f"""🍁𝐂𝐋𝐈𝐂𝐊🥰𝐁𝐄𝐋𝐎𝐖💝𝐁𝐔𝐓𝐓𝐎𝐍✨𝐓𝐎🙊𝐆𝐄𝐓🌱𝐑𝐄𝐏𝐎🍁""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🌱 𝐒𝐎𝐔𝐑𝐂𝐄 🌱", url=f"https://t.me/ProBotts"
-                    )
-                ]
-            ]
-        ),
+        photo=f"https://telegra.ph/file/93fe8699ccadb924effad.jpg",
+        caption=caption,
+        reply_markup=buttons
     )
 
 
 @Client.on_message(filters.command("repo") & filters.private)
 async def help(client: Client, message: Message):
     await message.reply_photo(
-        photo=f"https://graph.org/file/2fd9703e31548f7a1aaaa.jpg",
-        caption=f"""🍁𝐂𝐋𝐈𝐂𝐊🥰𝐁𝐄𝐋𝐎𝐖💝𝐁𝐔𝐓𝐓𝐎𝐍✨𝐓𝐎🙊𝐆𝐄𝐓🌱𝐑𝐄𝐏𝐎🍁""",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "🌱 𝐒𝐎𝐔𝐑𝐂𝐄 🌱", url=f"https://t.me/ProBotts"
-                    )
-                ]
-            ]
-        ),
+        photo=f"https://telegra.ph/file/93fe8699ccadb924effad.jpg",
+        caption=caption,
+        reply_markup=buttons
     )
 
 
