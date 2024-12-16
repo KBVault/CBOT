@@ -120,7 +120,15 @@ async def start_pm(client, message: Message, _):
 @LanguageStart
 async def start_gp(client, message: Message, _):
     a = await client.get_me()
-    out = start_panel(_)
+    # out = start_panel(_)
+    out = [
+                    [
+                        InlineKeyboardButton(
+                            text=_["S_B_1"], url=f"https://t.me/{a.username}?startgroup=true"
+                        ),
+                        InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
+                    ],
+                ]
     uptime = int(time.time() - _boot_)
     await message.reply_video(
         random.choice(NEXI_VID),
