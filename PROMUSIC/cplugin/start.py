@@ -22,7 +22,7 @@ from PROMUSIC.utils.database import (
 )
 from PROMUSIC.utils.decorators.language import LanguageStart
 from PROMUSIC.utils.formatters import get_readable_time
-from PROMUSIC.utils.inline import help_pannel, private_panel, start_panel
+from PROMUSIC.utils.inline import help_pannel, private_panel, start_panel, clone_private_panel, clone_start_panel
 from config import BANNED_USERS
 from strings import get_string
 
@@ -93,7 +93,22 @@ async def start_pm(client, message: Message, _):
             )
     
     else:
-        out = private_panel(_)
+        out = [
+        [
+            InlineKeyboardButton(
+                text=_["S_B_3"],
+                url=f"https://t.me/{a.username}?startgroup=true",
+            )
+        ],
+        [
+            InlineKeyboardButton(text=_["S_B_5"], user_id=config.OWNER_ID),
+            InlineKeyboardButton(text=_["S_B_6"], url=config.SUPPORT_CHANNEL),
+        ],
+        [
+            InlineKeyboardButton(text=_["S_B_4"], callback_data="settings_back_helper"),
+        ],
+    ]
+        # out = private_panel(_)
         await message.reply_video(
             random.choice(NEXI_VID),
             caption=_["start_2"].format(message.from_user.mention, a.mention),
