@@ -2,7 +2,7 @@
 # Created By - @ProBotts || @ZeoXpro
 
 
-from PROMUSIC import client
+from PROMUSIC import app
 from pyrogram.errors import RPCError
 from pyrogram.types import ChatMemberUpdated, InlineKeyboardMarkup, InlineKeyboardButton
 from os import environ
@@ -129,13 +129,13 @@ def welcomepic(pic, user, chatname, id, uname, brightness_factor=1.3):
     return f"downloads/welcome#{id}.png"
 
 
-@Client.on_message(filters.command("welcome") & ~filters.private)
+@app.on_message(filters.command("welcome") & ~filters.private)
 async def auto_state(_, message):
     usage = "**ᴜsᴀɢᴇ:**\n**⦿ /welcome [on|off]**"
     if len(message.command) == 1:
         return await message.reply_text(usage)
     chat_id = message.chat.id
-    user = await client.get_chat_member(message.chat.id, message.from_user.id)
+    user = await app.get_chat_member(message.chat.id, message.from_user.id)
     if user.status in (
         enums.ChatMemberStatus.ADMINISTRATOR,
         enums.ChatMemberStatus.OWNER,
@@ -161,12 +161,10 @@ async def auto_state(_, message):
 
 
 
-@Client.on_chat_member_updated(filters.group, group=-3)
+@app.on_chat_member_updated(filters.group, group=-3)
 async def greet_new_member(_, member: ChatMemberUpdated):
-    a = await client.get_me()
-    
     chat_id = member.chat.id
-    count = await client.get_chat_members_count(chat_id)
+    count = await app.get_chat_members_count(chat_id)
     A = await wlcm.find_one(chat_id)
     if A:
         return
@@ -177,7 +175,7 @@ async def greet_new_member(_, member: ChatMemberUpdated):
     if member.new_chat_member and not member.old_chat_member and member.new_chat_member.status != "kicked":
     
         try:
-            pic = await client.download_media(
+            pic = await app.download_media(
                 user.photo.big_file_id, file_name=f"pp{user.id}.png"
             )
         except AttributeError:
@@ -194,8 +192,8 @@ async def greet_new_member(_, member: ChatMemberUpdated):
             button_text = "๏ ᴠɪᴇᴡ ɴᴇᴡ ᴍᴇᴍʙᴇʀ ๏"
             add_button_text = "๏ ᴋɪᴅɴᴀᴘ ᴍᴇ ๏"
             deep_link = f"tg://openmessage?user_id={user.id}"
-            add_link = f"https://t.me/{a.username}?startgroup=true"
-            temp.MELCOW[f"welcome-{member.chat.id}"] = await client.send_photo(
+            add_link = f"https://t.me/{app.username}?startgroup=true"
+            temp.MELCOW[f"welcome-{member.chat.id}"] = await app.send_photo(
                 member.chat.id,
                 photo=welcomeimg,
                 caption=f"""
