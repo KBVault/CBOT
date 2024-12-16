@@ -157,7 +157,16 @@ async def welcome(client, message: Message):
                     )
                     return await client.leave_chat(message.chat.id)
 
-                out = start_panel(_)
+                # out = start_panel(_)
+                out = [
+                    [
+                        InlineKeyboardButton(
+                            text=_["S_B_1"], url=f"https://t.me/{a.username}?startgroup=true"
+                        ),
+                        InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
+                    ],
+                ]
+
                 await message.reply_video(
                     random.choice(NEXI_VID),
                     caption=_["start_3"].format(
