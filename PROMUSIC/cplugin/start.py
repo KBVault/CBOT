@@ -22,7 +22,7 @@ from PROMUSIC.utils.database import (
 )
 from PROMUSIC.utils.decorators.language import LanguageStart
 from PROMUSIC.utils.formatters import get_readable_time
-from PROMUSIC.utils.inline import help_pannel, private_panel, start_panel, clone_private_panel, clone_start_panel
+from PROMUSIC.utils.inline import help_pannel, private_panel, start_panel
 from config import BANNED_USERS
 from strings import get_string
 
