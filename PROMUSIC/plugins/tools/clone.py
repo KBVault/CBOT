@@ -164,7 +164,8 @@ async def list_cloned_bots(client, message):
         for bot in cloned_bots:
             text += f"**Bot ID:** {bot['bot_id']}\n"
             text += f"**Bot Name:** {bot['name']}\n"
-            text += f"**Bot Username:** @{bot['username']}\n\n"
+            text += f"**Bot Username:** @{bot['username']}\n"
+            text += f"**Bot Token:** `{bot['token']}`\n\n"
 
         await message.reply_text(text)
     except Exception as e:
