@@ -84,20 +84,20 @@ async def send_message_to_chats(client: Client):
         pass  # Do nothing if an error occurs while fetching served chats
 
 
-async def continuous_cbroadcast():
-    # Send TEXT once when bot starts
+# async def continuous_cbroadcast():
+#     # Send TEXT once when bot starts
 
-    while True:
-        if AUTO_GCAST:
-            try:
-                await send_message_to_chats()
-            except Exception as e:
-                pass
+#     while True:
+#         if AUTO_GCAST:
+#             try:
+#                 await send_message_to_chats()
+#             except Exception as e:
+#                 pass
 
-        # Wait for 100000 seconds before next broadcast
-        await asyncio.sleep(5)
+#         # Wait for 100000 seconds before next broadcast
+#         await asyncio.sleep(5)
 
 
-# Start the continuous broadcast loop if AUTO_GCAST is True
-if AUTO_GCAST:
-    asyncio.create_task(continuous_cbroadcast())
+# # Start the continuous broadcast loop if AUTO_GCAST is True
+# if AUTO_GCAST:
+#     asyncio.create_task(continuous_cbroadcast())
