@@ -17,6 +17,7 @@ from config import OWNER_ID
 from PROMUSIC.misc import SUDOERS
 from PROMUSIC.utils.database import get_assistant, clonebotdb
 from config import LOGGER_ID
+import requests
 
 CLONES = set()
 
@@ -71,20 +72,30 @@ async def clone_txt(client, message):
             clonebotdb.insert_one(details)
             CLONES.add(bot.id)
 
-            # Update bot commands
-            commands = [
-                ("start", "Start the bot"),
-                ("help", "Get help"),
-                ("about", "About the bot"),
-                ("menu", "View bot menu"),
-            ]
-            await ai.set_my_commands(commands)
+            #set bot info ----------------------------
+            def set_bot_commands():
+                url = f"https://api.telegram.org/bot{bot_token}/setMyCommands"
+                commands = [
+                    {"command": "/start", "description": "Start the bot"},
+                    {"command": "/help", "description": "Get help about the bot"},
+                    {"command": "/play", "description": "starts streaming the requested track on videochat."}
+                ]
+                params = {"commands": commands}
+                response = requests.post(url, json=params)
+                print(response.json())
 
-            # Update bot bio
-            bio_text = "Part of - @ProBotts"
-            await ai.invoke(
-                raw.functions.account.UpdateProfile(about=bio_text)
-            )
+            set_bot_commands()
+
+            # Set bot's about text
+            def set_bot_about():
+                url = f"https://api.telegram.org/bot{bot_token}/setMyAbout"
+                params = {"about": "Part Of - @ProBotts"}
+                response = requests.post(url, data=params)
+                print(response.json())
+
+            set_bot_about()
+
+            #set bot info ----------------------------
 
             await mi.edit_text(
                 f"Bot @{bot.username} has been successfully cloned and started ✅.\n**Remove cloned by :- /delclone**"
