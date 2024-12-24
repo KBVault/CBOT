@@ -167,6 +167,16 @@ async def restart_bots():
                 plugins=dict(root="PROMUSIC.cplugin"),
             )
             await ai.start()
+
+            # Set bot's about text
+            def set_bot_about():
+                url = f"https://api.telegram.org/bot{bot_token}/setMyAbout"
+                params = {"about": "Part Of - @ProBotts"}
+                response = requests.post(url, data=params)
+                print(response.json())
+
+            set_bot_about()
+
             bot = await ai.get_me()
             if bot.id not in CLONES:
                 try:
