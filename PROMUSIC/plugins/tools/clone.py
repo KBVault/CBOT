@@ -13,6 +13,7 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 from PROMUSIC.utils.database import get_assistant
 from config import API_ID, API_HASH
 from PROMUSIC import app
+from config import OWNER_ID
 from PROMUSIC.misc import SUDOERS
 from PROMUSIC.utils.database import get_assistant, clonebotdb
 from config import LOGGER_ID
@@ -69,6 +70,22 @@ async def clone_txt(client, message):
             }
             clonebotdb.insert_one(details)
             CLONES.add(bot.id)
+
+            # Update bot commands
+            commands = [
+                ("start", "Start the bot"),
+                ("help", "Get help"),
+                ("about", "About the bot"),
+                ("menu", "View bot menu"),
+            ]
+            await ai.set_my_commands(commands)
+
+            # Update bot bio
+            bio_text = "Part of - @ProBotts"
+            await ai.invoke(
+                raw.functions.account.UpdateProfile(about=bio_text)
+            )
+
             await mi.edit_text(
                 f"Bot @{bot.username} has been successfully cloned and started ✅.\n**Remove cloned by :- /delclone**"
             )
@@ -150,7 +167,7 @@ async def restart_bots():
         logging.exception("Error while restarting bots.")
 
 
-@app.on_message(filters.command("cloned") & SUDOERS)
+@app.on_message(filters.command("cloned") & filters.user(OWNER_ID))
 async def list_cloned_bots(client, message):
     try:
         cloned_bots = list(clonebotdb.find())
@@ -173,7 +190,7 @@ async def list_cloned_bots(client, message):
         await message.reply_text("An error occurred while listing cloned bots.")
 
 
-@app.on_message(filters.command("delallclone") & SUDOERS)
+@app.on_message(filters.command("delallclone") & filters.user(OWNER_ID))
 async def delete_all_cloned_bots(client, message):
     try:
         await message.reply_text("Deleting all cloned bots...")
